@@ -24,7 +24,8 @@ jobs:
     - name: connect to adb and scrcpy
       env:
         CLOUDFLARED_AUTH_TOKEN : ${{ secrets.CLOUDFLARED_AUTH_TOKEN }}
-      run: 'cloudflared tunnel run --token $CLOUDFLARED_AUTH_TOKEN'
+      run: |
+        cloudflared tunnel run --token $CLOUDFLARED_AUTH_TOKEN
 
 
 

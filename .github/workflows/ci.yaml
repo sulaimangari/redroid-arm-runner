@@ -9,22 +9,12 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: install dependency
-      uses: |
-        sudo apt update
-        sudo apt install adb
-        sudo apt install linux-modules-extra-`uname -r`
-        modprobe binder_linux devices="binder,hwbinder,vndbinder"
-        modprobe ashmem_linux
-
-    - name: install cloudlfared
-      uses: |
-        sudo mkdir -p --mode=0755 /usr/share/keyrings
-        curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
-        echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
-        sudo apt-get install cloudflared
+      run: |
+        chmod +x start.sh
+        bash start.sh
 
     - name: running redroid
-      uses: |
+      run: |
         docker run -itd --rm --privileged \
             --pull always \
             -v ~/data:/data \
@@ -32,7 +22,9 @@ jobs:
             redroid/redroid:12.0.0_64only-latest
 
     - name: connect to adb and scrcpy
-      uses: |
-        cloudflared tunnel run --token ${{ secrets.CLOUDFLARED_AUTH_TOKEN }}
+      env:
+        CLOUDFLARED_AUTH_TOKEN : ${{ secrets.CLOUDFLARED_AUTH_TOKEN }}
+      run: 'cloudflared tunnel run --token $CLOUDFLARED_AUTH_TOKEN'
+
 
 

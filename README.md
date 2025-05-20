@@ -1,5 +1,5 @@
 ## Experimental aarch64 based Android emulator on Github runner
-
+**!!!!WARNING TO USE YOUR OWN BORE SERVER CHANGE TO CUSTOM-SERVER BRANCH**  
 ### Getting Started
 For connection this package uses [bore](https://github.com/ekzhang/bore)  
 To use the emulator you can start by forking this repository.  

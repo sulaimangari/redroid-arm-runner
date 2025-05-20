@@ -1,5 +1,4 @@
 ## Experimental aarch based Android emulator on Github runner
-______________________________________________________________
 
 ### Getting Started
 For connection this package uses [bore](https://github.com/ekzhang/bore)

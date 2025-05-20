@@ -24,7 +24,7 @@ jobs:
     - name: run bore
       env:
         BORE_IP : ${{ secrets.BORE_IP }}
-      run: 'bore local 5555 --to bore.pub'
+      run: 'bore local 5555 --to $BORE_IP'
     # - name: initialize tmate ssh
     #   uses: mxschmitt/action-tmate@v3
     # - name: connect to adb and scrcpy

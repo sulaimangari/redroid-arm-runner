@@ -4,10 +4,10 @@
 For connection this package uses [bore](https://github.com/ekzhang/bore)  
 To use the emulator you can start by forking this repository.  
 To start the emulator you can go to Action tab and manually start the CI workflow.  
-You can get the bore.pub port from 'run bore' section.  
+You must supply your own server key in the git repository secret with variable **BORE_IP**  
 ```bash
 ## It wil be listed like this 
-listening at bore.pub:XXXX
+listening at ...:XXXX
 ```
 
 ### Connect to emulator from client
@@ -20,8 +20,8 @@ sudo apt install cargo adb scrcpy
 Then connect to devices using adb and mirror using [scrcpy](https://github.com/Genymobile/scrcpy)
 
 ```bash
-adb connect bore.pub:XXXX
-scrcpy -s bore.pub:XXXX
+adb connect $BORE_IP:XXXX
+scrcpy -s $BORE_IP:XXXX
 ```
 ### TODO
 - Add GMS
